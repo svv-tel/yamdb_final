@@ -35,7 +35,7 @@ jobs:
     needs: tests
     steps:
       - run: | 
-          cd api_yamdb/
+          cd yamdb_final/api_yamdb/
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Set up Docker Buildx
