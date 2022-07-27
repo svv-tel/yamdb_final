@@ -5,7 +5,6 @@ on: [push]
 jobs:
   tests:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
@@ -17,7 +16,6 @@ jobs:
       run: | 
         python -m pip install --upgrade pip 
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
-        pip install --upgrade flake8
         pip install isort
         isort .
         cd api_yamdb/
@@ -34,8 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: tests
     steps:
-      - run: | 
-          cd yamdb_final/api_yamdb/
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -48,5 +44,6 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2
         with:
+          file: ./api_yamdb/Dockerfile
           push: true
-          tags: 0302198703021987/yamdb_final:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
