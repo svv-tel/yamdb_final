@@ -62,7 +62,7 @@ jobs:
             sudo docker-compose stop
             sudo docker-compose rm web
             sudo docker pull 0302198703021987/yamdb_final:latest
-            touch .env
+            sudo touch .env
             echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -71,9 +71,9 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
-            sudo winpty docker-compose exec web python manage.py migrate
-            sudo winpty docker-compose exec web python manage.py collectstatic --no-input
-            sudo winpty docker-compose exec web python manage.py loaddata fixtures.json
+            sudo docker-compose exec web python manage.py migrate
+            sudo docker-compose exec web python manage.py collectstatic --no-input
+            sudo docker-compose exec web python manage.py loaddata fixtures.json
 
   send_message:
     runs-on: ubuntu-latest
