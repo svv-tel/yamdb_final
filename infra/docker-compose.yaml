@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
   db:
@@ -32,4 +32,3 @@ services:
 volumes:
   static_value:
   media_value:
-    
