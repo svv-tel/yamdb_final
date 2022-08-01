@@ -61,7 +61,11 @@ jobs:
           script: |
             sudo docker pull 0302198703021987/yamdb_final:latest
             sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 0302198703021987/yamdb_final:latest
+            sudo docker-compose rm web
+            sudo docker-compose up -d
+            sudo docker-compose exec web python manage.py migrate
+            sudo docker-compose exec web python manage.py collectstatic --no-input
+            sudo docker-compose exec web python manage.py loaddata fixtures.json
 
   send_message:
     runs-on: ubuntu-latest
