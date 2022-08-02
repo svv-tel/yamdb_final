@@ -3,6 +3,9 @@
 # api yamdb
 Проект запущен для ознакомления по адресу: http://51.250.99.9/api/v1/
 
+### Запросы / ответы:
+Документация, с подробным описанием доступных запросов, ответов и статусов, расположена по адресу http://51.250.99.9/redoc/
+
 ## Описание:
 ### Api для проекта YaMDb, который собирает отзывы пользователей на произведения.
 
@@ -62,7 +65,7 @@ docker-compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --no-input
 ```
 
-Теперь проект доступен по адресу http://localhost/
+Теперь проект доступен по адресу сервера.
 
 ### Данные:
 
@@ -71,9 +74,6 @@ docker-compose exec web python manage.py collectstatic --no-input
 ```
 python manage.py import_csv --path /static/data/<fileName> --model <modelName> --app <appName>
 ```
-
-### Запросы / ответы:
-Документация, с подробным описанием доступных запросов, ответов и статусов, расположена по адресу http://localhost/api/redoc/
 
 ### Авторы:
 
