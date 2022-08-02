@@ -27,9 +27,5 @@ urlpatterns = [
     path('v1/auth/signup/', views.auth_signup, name='auth_signup'),
     path('v1/auth/token/', views.auth_token, name='auth_token'),
     path('v1/users/me/', views.users_me, name='users_me'),
-    path(
-        'redoc/', TemplateView.as_view(template_name='api/redoc.html'),
-        name='redoc'
-    ),
     path('v1/', include(router.urls)),
 ]
